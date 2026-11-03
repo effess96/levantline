@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Olive & Ember Café · Menu</title>
-<!-- Restaurant Menu Template v1.1 by levantline
-     Changelog: v1.1 tabs centred on wide screens · v1.0 first release · EN/AR toggle · WhatsApp ordering · cart total
+<!-- Restaurant Menu Template v1.2 by levantline
+     Changelog: v1.2 premium dark theme (theme:"dark") · v1.1 tabs centred on wide screens · v1.0 first release · EN/AR toggle · WhatsApp ordering · cart total
      EDIT ONLY THE "CAFE" BLOCK BELOW. -->
 <style>
 :root{--bg:#FBF7F0;--ink:#22201C;--muted:#7A736A;--accent:#B4532A;--card:#fff;--line:#EDE5D8}
@@ -13,7 +13,7 @@ header{padding:28px 20px 18px;text-align:center}
 h1{font-size:28px;letter-spacing:-.5px}.tag{color:var(--muted);margin-top:4px}
 .meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 .meta a,.meta span{font-size:13px;padding:7px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none}
-.lang{position:absolute;top:16px;right:16px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 13px;font-weight:700;cursor:pointer}
+.lang{color:var(--ink);position:absolute;top:16px;right:16px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 13px;font-weight:700;cursor:pointer}
 [dir=rtl] .lang{right:auto;left:16px}
 nav{position:sticky;top:0;justify-content:safe center;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--line);z-index:5}
 nav a{flex:none;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}
@@ -26,6 +26,17 @@ h2{font-size:20px;margin:26px 0 12px}
 .bar{position:fixed;left:0;right:0;bottom:0;padding:14px 16px;background:var(--card);border-top:1px solid var(--line);display:none}
 .bar a{display:block;max-width:640px;margin:auto;text-align:center;background:#1FA855;color:#fff;font-weight:800;padding:15px;border-radius:14px;text-decoration:none}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+
+[data-theme=dark]{--bg:#0F0E0C;--ink:#F3EBDD;--muted:#A79C8B;--accent:#D4A853;--card:#1A1815;--line:#2C2924}
+[data-theme=dark] body{background:radial-gradient(900px 500px at 50% -10%,rgba(212,168,83,.18),transparent 60%),var(--bg)}
+[data-theme=dark] h1,[data-theme=dark] h2{font-family:Georgia,"Times New Roman",serif;letter-spacing:.3px}
+[data-theme=dark] h1{font-size:32px}
+[data-theme=dark] .logo{background:transparent;border:1.5px solid var(--accent);color:var(--accent);font-family:Georgia,serif}
+[data-theme=dark] .item{background:linear-gradient(180deg,#1C1A17,#161412)}
+[data-theme=dark] .qty button{background:#0F0E0C;color:var(--ink)}
+[data-theme=dark] .bar{background:rgba(15,14,12,.92);backdrop-filter:blur(10px)}
+[data-theme=dark] nav{background:rgba(15,14,12,.92);backdrop-filter:blur(10px)}
+[data-theme=dark] .bar a{background:var(--accent);color:#0F0E0C}
 </style></head><body>
 <button class="lang" id="lang">عربي</button>
 <header><div class="logo" id="logo"></div><h1 id="name"></h1><p class="tag" id="tagline"></p><div class="meta" id="meta"></div></header>
@@ -38,6 +49,7 @@ const CAFE={
  name:{en:"Olive & Ember Café",ar:"مقهى زيتون وجمر"},
  tagline:{en:"Coffee, bakes & breakfast",ar:"قهوة، مخبوزات وفطور"},
  logo:"O&E",
+ theme:"light",                     // "light" (warm) or "dark" (premium)
  whatsapp:"15555550123",            // number with country code, no + or spaces
  currency:"$",
  hours:{en:"Daily 8:00–22:00",ar:"يومياً ٨:٠٠–٢٢:٠٠"},
@@ -56,7 +68,7 @@ const CAFE={
    {n:{en:"Maamoul (3)",ar:"معمول (٣)"},d:{en:"Date-filled",ar:"بالتمر"},p:4}]}]
 };
 /* ===== end of edit area ===== */
-let L="en";const cart={};
+let L="en";const qp=new URLSearchParams(location.search).get("theme");document.documentElement.dataset.theme=qp||CAFE.theme;const cart={};
 const $=id=>document.getElementById(id);
 function render(){
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
