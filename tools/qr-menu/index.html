@@ -90,7 +90,7 @@ if(name){c.font='700 84px system-ui,-apple-system,Tahoma,sans-serif';let s=84;wh
 c.fillStyle='#555';c.font='500 48px system-ui,-apple-system,Tahoma,sans-serif';c.fillText(t.scan,W/2,y0);
 last=cv.toDataURL('image/png');const o=$('out');o.src=last;o.style.display='block';$('empty').style.display='none';$('dl').disabled=false}
 $('go').onclick=make;$('url').addEventListener('keydown',e=>{if(e.key=='Enter')make()});
-$('dl').onclick=()=>{if(!last)return;const a=document.createElement('a');a.href=last;a.download=(($('biz').value.trim()||'menu').replace(/[^\w؀-ۿ-]+/g,'-'))+'-qr.png';document.body.appendChild(a);a.click();a.remove()};
+$('dl').onclick=()=>{if(!last)return;const a=document.createElement('a');a.href=last;a.download=(($('biz').value.trim()||'menu').replace(/[^\p{L}\p{N}_-]+/gu,'-'))+'-qr.png';document.body.appendChild(a);a.click();a.remove()};
 $('lbtn').onclick=()=>{L=L=='en'?'ar':'en';try{localStorage.setItem('lv-lang',L)}catch(e){}apply()};
 const tb=$('tbtn');function icon(){tb.textContent=r.dataset.theme==='dark'?'☀️':'🌙'}
 try{const v=localStorage.getItem('lv-theme');if(v)r.dataset.theme=v;const l=localStorage.getItem('lv-lang');if(l&&T[l])L=l}catch(e){}
