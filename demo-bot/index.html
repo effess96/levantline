@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WhatsApp booking bot demo · Cedar Dental</title>
+<!-- WhatsApp Bot Demo v1.0 by levantline
+     Changelog: v1.0 rule-based FAQ + booking flow · EN/AR · quick-reply buttons
+     Demo only: simulates the bot in the browser. The live version runs on a server. -->
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#E9E3DA;display:flex;justify-content:center;min-height:100vh}
+.phone{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column;background:#EFE7DE}
+.top{background:#075E54;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:2}
+.av{width:38px;height:38px;border-radius:50%;background:#1F6F6B;display:grid;place-items:center;font-weight:800}
+.top b{display:block;font-size:16px}.top small{opacity:.8;font-size:12px}
+.top button{margin-left:auto;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:999px;padding:6px 12px;font-weight:700;cursor:pointer}
+.chat{flex:1;padding:14px 10px 10px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+.m{max-width:82%;padding:8px 11px 6px;border-radius:10px;font-size:15px;line-height:1.4;white-space:pre-line;box-shadow:0 1px .5px rgba(0,0,0,.13)}
+.bot{background:#fff;align-self:flex-start;border-top-left-radius:2px}
+.me{background:#D9FDD3;align-self:flex-end;border-top-right-radius:2px}
+[dir=rtl] .bot{align-self:flex-end;border-top-left-radius:10px;border-top-right-radius:2px}
+[dir=rtl] .me{align-self:flex-start;border-top-right-radius:10px;border-top-left-radius:2px}
+.t{display:block;text-align:right;font-size:11px;color:#667781;margin-top:2px}
+.qr{display:flex;flex-wrap:wrap;gap:6px;padding:4px 10px 12px}
+.qr button{background:#fff;border:1px solid #CFE9E3;color:#0B7B6C;border-radius:999px;padding:8px 13px;font-weight:700;font-size:14px;cursor:pointer}
+.bar{display:flex;gap:8px;padding:8px 10px 14px;background:#EFE7DE}
+.bar input{flex:1;border:0;border-radius:22px;padding:12px 15px;font-size:15px;outline:none}
+.bar button{width:46px;height:46px;border-radius:50%;border:0;background:#00A884;color:#fff;font-size:18px;cursor:pointer}
+.note{text-align:center;font-size:12px;color:#667781;background:#FFF5C4;margin:6px auto;padding:5px 10px;border-radius:7px;max-width:90%}
+</style></head><body>
+<div class="phone">
+<div class="top"><div class="av">C</div><div><b id="title"></b><small id="status"></small></div><button id="lang"></button></div>
+<div class="chat" id="chat"></div>
+<div class="qr" id="qr"></div>
+<form class="bar" id="f"><input id="in" autocomplete="off"><button aria-label="Send">➤</button></form>
+</div>
+<script>
+/* ===== BOT: edit everything here ===== */
+const BOT={
+ name:{en:"Cedar Dental Studio",ar:"عيادة سيدار لطب الأسنان"},
+ hours:{en:"Sun–Thu 9:00–19:00 · Sat 10:00–16:00 · Fri closed",ar:"الأحد–الخميس ٩:٠٠–١٩:٠٠ · السبت ١٠:٠٠–١٦:٠٠ · الجمعة مغلق"},
+ location:{en:"Main Street 12, next to the pharmacy. Map: maps.google.com",ar:"الشارع الرئيسي ١٢، بجانب الصيدلية. الخريطة: maps.google.com"},
+ services:[{en:"Check-up & cleaning — $40",ar:"فحص وتنظيف — ٤٠$"},{en:"Teeth whitening — $150",ar:"تبييض — ١٥٠$"},{en:"Kids dentistry — $30",ar:"أسنان الأطفال — ٣٠$"},{en:"Fillings — from $60",ar:"حشوات — من ٦٠$"}],
+ slots:["Sun 10:00","Sun 15:30","Mon 11:00","Tue 17:00"]
+};
+/* ===== end of edit area ===== */
+const T={
+ status:{en:"online · replies instantly",ar:"متصل · يرد فوراً"},
+ note:{en:"Demo: try the buttons or type 'price', 'hours', 'book'",ar:"تجربة: جرّب الأزرار أو اكتب 'سعر'، 'دوام'، 'حجز'"},
+ hi:{en:"Hi! 👋 Welcome to {n}.\nHow can I help you today?",ar:"أهلاً! 👋 مرحباً بك في {n}.\nكيف بقدر أساعدك اليوم؟"},
+ menu:{en:["📅 Book","💲 Prices","🕒 Hours","📍 Location","👤 Talk to staff"],ar:["📅 حجز","💲 الأسعار","🕒 الدوام","📍 الموقع","👤 كلم موظف"]},
+ prices:{en:"Our main prices:\n",ar:"أسعارنا الأساسية:\n"},
+ hours:{en:"🕒 Opening hours:\n",ar:"🕒 ساعات العمل:\n"},
+ loc:{en:"📍 ",ar:"📍 "},
+ pickSvc:{en:"Great! Which service?",ar:"تمام! أي خدمة؟"},
+ pickSlot:{en:"Nice choice. Pick a time:",ar:"اختيار ممتاز. اختر الموعد:"},
+ askName:{en:"Almost done! What's your name?",ar:"قربنا نخلص! شو اسمك؟"},
+ done:{en:"✅ Booked, {name}!\n{svc}\n{slot}\nWe'll send a reminder the day before. Reply 'menu' anytime.",ar:"✅ تم الحجز يا {name}!\n{svc}\n{slot}\nرح نرسلك تذكير قبل بيوم. اكتب 'قائمة' بأي وقت."},
+ staff:{en:"👤 A team member will reply here shortly (within working hours).",ar:"👤 رح يرد عليك أحد الموظفين هون قريباً (ضمن الدوام)."},
+ unknown:{en:"Sorry, I didn't get that. Choose an option below 👇",ar:"عذراً، ما فهمت. اختر من الخيارات 👇"},
+ ph:{en:"Type a message",ar:"اكتب رسالة"}
+};
+let L="en",state="menu",pick={};const $=id=>document.getElementById(id),R=document.documentElement;
+const now=()=>new Date().toTimeString().slice(0,5);
+function add(txt,who){const d=document.createElement("div");d.className="m "+who;d.textContent=txt;const s=document.createElement("span");s.className="t";s.textContent=now()+(who==="me"?" ✓✓":"");d.appendChild(s);$("chat").appendChild(d);$("chat").scrollTop=1e6;window.scrollTo(0,document.body.scrollHeight)}
+function bot(txt,opts){setTimeout(()=>{add(txt,"bot");buttons(opts||T.menu[L])},450)}
+function buttons(list){$("qr").innerHTML="";list.forEach(o=>{const b=document.createElement("button");b.type="button";b.textContent=o;b.onclick=()=>send(o);$("qr").appendChild(b)})}
+function has(t,...k){t=t.toLowerCase();return k.some(x=>t.includes(x))}
+function reply(t){
+ if(state==="svc"){pick.svc=t;state="slot";return bot(v(T.pickSlot),BOT.slots)}
+ if(state==="slot"){pick.slot=t;state="name";return bot(v(T.askName),[])}
+ if(state==="name"){state="menu";return bot(v(T.done).replace("{name}",t).replace("{svc}",pick.svc).replace("{slot}",pick.slot))}
+ if(has(t,"book","appoint","حجز","موعد","📅")){state="svc";return bot(v(T.pickSvc),BOT.services.map(s=>s[L]))}
+ if(has(t,"price","cost","how much","سعر","اسعار","أسعار","💲"))return bot(v(T.prices)+BOT.services.map(s=>"• "+s[L]).join("\n"));
+ if(has(t,"hour","open","time","دوام","ساعات","🕒"))return bot(v(T.hours)+v(BOT.hours));
+ if(has(t,"where","location","address","map","موقع","وين","عنوان","📍"))return bot(v(T.loc)+v(BOT.location));
+ if(has(t,"staff","human","person","موظف","👤"))return bot(v(T.staff));
+ if(has(t,"hi","hello","menu","مرحبا","السلام","قائمة","اهلا","أهلا"))return bot(v(T.hi).replace("{n}",v(BOT.name)));
+ bot(v(T.unknown));}
+function v(x){return x[L]}
+function send(t){if(!t.trim())return;add(t,"me");$("qr").innerHTML="";reply(t.trim())}
+function start(){R.lang=L;R.dir=L==="ar"?"rtl":"ltr";$("chat").innerHTML="";state="menu";pick={};
+ $("title").textContent=v(BOT.name);$("status").textContent=v(T.status);$("lang").textContent=L==="en"?"عربي":"English";$("in").placeholder=v(T.ph);
+ const n=document.createElement("div");n.className="note";n.textContent=v(T.note);$("chat").appendChild(n);
+ bot(v(T.hi).replace("{n}",v(BOT.name)))}
+$("f").onsubmit=e=>{e.preventDefault();send($("in").value);$("in").value=""};
+$("lang").onclick=()=>{L=L==="en"?"ar":"en";start()};start();
+</script></body></html>
