@@ -1,0 +1,68 @@
+=== GUMROAD LISTING (DRAFT, do not publish until Basha approves) ===
+Name: Business Landing Page Template (WhatsApp Booking, English + Arabic)
+Price: $15 [Opinion: test; compare 3 similar templates first. Menu template is $19; this is simpler]
+Cover: landing-cover.png (1280x720)
+File: business-landing-template-v1.zip
+Live demo: https://effess96.github.io/levantline/demo-landing/  (live after the PR is merged)
+Description:
+A one-page website for any small business: clinics, salons, gyms, tutors, repair shops, studios. Customers tap one button and message you on WhatsApp.
+• One HTML file. No installs, no coding tools. Edit your details in one clearly marked block.
+• English + Arabic with one tap (right-to-left switches automatically)
+• Light and dark mode with a toggle
+• "Book on WhatsApp" button + floating WhatsApp button with a ready-made message
+• Opening hours, services with prices, "why choose us", map link, call button
+• Works on any phone. Host it free (GitHub Pages, Netlify, Cloudflare Pages)
+What you get: template ZIP (index.html + HOW-TO-USE.md), v1.0 changelog.
+Licence: use for your own business or your clients' sites. Do not resell or share the file.
+Tags: landing page, website template, whatsapp, arabic, rtl, small business, html template, booking page
+
+=== FIVERR GIG #2: LANDING PAGE ===
+Category: Programming & Tech > Website Development (or Web design). Check the exact category in the form.
+Title (<=80 incl. "I will"): I will build a bilingual English Arabic landing page with WhatsApp booking
+ (74 chars)
+Tagline: none needed. If asked: Fast mobile website for your small business
+Search tags: landing page, arabic website, whatsapp, small business, bilingual
+Description:
+Get a clean one-page website that turns visitors into WhatsApp messages and bookings.
+I build mobile-first pages in English, Arabic or both (right-to-left handled properly), with light and dark mode.
+Every page includes: your name and logo letter, headline, services with prices, opening hours, a one-tap WhatsApp booking button, a call button and a map link.
+How it works: you send your business details and services. I send a draft within the delivery time. You get one round of changes, then the final file ready to host, plus a short guide on how to put it online.
+Good for clinics, salons, gyms, tutors, repair shops, studios and local services.
+Packages (min $80 per category rule):
+- Basic $80: 1 language, 1-page site, WhatsApp button, 4 services, 3 days
+- Standard $120: English + Arabic, light/dark toggle, hours and map, 6 services, 4 days
+- Premium $180: everything in Standard + custom colours, 2 revisions, help putting it online, 5 days
+FAQ:
+Q: Do you need my logo? A: No. I can use a simple letter badge, or you can send your logo in the chat.
+Q: Can you host it? A: I give you the file and a guide to host it free. Hosting setup help is in Premium.
+Q: Is Arabic proper right-to-left? A: Yes, the layout flips automatically.
+Requirements for buyer: business name, services and prices, opening hours, WhatsApp number (country code), preferred colours.
+Images: fiverr/landing-gig-1.png, fiverr/landing-gig-2.png (1280x769). Video optional.
+Rules check: no email/phone/off-platform links in text or images (images contain none; demo numbers are fake).
+
+=== FIVERR GIG #3: WHATSAPP BOOKING BOT ===
+Category: Programming & Tech > AI Applications / Chatbots (check exact name in form)
+Title (<=80 incl. "I will"): I will build a WhatsApp booking and FAQ chatbot for your business
+ (69 chars)
+Tags: whatsapp bot, chatbot, booking bot, automation, arabic chatbot
+Description:
+Answer customers 24/7 without typing the same replies all day. I build a chatbot that answers prices, opening hours and location, and collects booking requests, in English and Arabic.
+Honest scope: the Basic package is a bot flow and web chat widget. WhatsApp connection uses the official WhatsApp Business Cloud API (Meta), which needs your Meta business account; I guide you through setup. Meta's own fees and approval times apply.
+How it works: you send your FAQs, prices and hours. I design the conversation flow, test it with you, and hand over a working bot with a short guide.
+Packages:
+- Basic $90: FAQ + prices + hours bot flow, 1 language, website chat widget, 4 days
+- Standard $160: English + Arabic, booking-request flow, WhatsApp Cloud API connection guided setup, 7 days
+- Premium $280: Standard + hosting setup on a server, handover to your team, 2 revision rounds, 10 days
+FAQ:
+Q: Is the WhatsApp connection free? A: Setup by me is in the price. Meta may charge per conversation after the free tier; check Meta's current pricing.
+Q: Can it take payments? A: Not in these packages.
+Q: Do you use unofficial WhatsApp tools? A: No. Official API only, to avoid number bans.
+Requirements for buyer: business details, FAQ list, prices, hours, WhatsApp Business number (not already used on a personal phone app), access to your Meta Business account for the Standard/Premium connection.
+Images: fiverr/bot-gig-1.png (add 2 more later: try 2 screens). 
+Rules check: no outside contact info in text/images.
+NOTE: the Premium hosting and live bots depend on a paid server (Railway); price covers setup, monthly hosting cost to be agreed inside Fiverr messages only [Opinion: confirm what Fiverr allows].
+
+=== WHAT BASHA DOES (about 25 min total, none before PR merge) ===
+1. Merge the PR (2 min): link in chat.
+2. Upload ZIP + cover to Gumroad as a draft, check price (8 min).
+3. Fiverr: create gig #2 and #3 from the text above, upload images (15 min). Do NOT publish anything with unverified claims.

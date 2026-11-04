@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cedar Dental Studio</title>
+<!-- Business Landing Page Template v1.0 by levantline
+     Changelog: v1.0 first release · EN/AR · light/dark toggle · WhatsApp booking
+     EDIT ONLY THE "BIZ" BLOCK IN THE SCRIPT BELOW. -->
+<style>
+:root{--bg:#F8F6F2;--ink:#1E2328;--muted:#6B7280;--accent:#1F6F6B;--accent2:#E9A23B;--card:#fff;--line:#E7E1D7}
+[data-theme=dark]{--bg:#0F0E0C;--ink:#F3EBDD;--muted:#A79C8B;--accent:#D4A853;--accent2:#D4A853;--card:#1A1815;--line:#2C2924}
+*{box-sizing:border-box;margin:0}body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+[data-theme=dark] body{background:radial-gradient(900px 500px at 50% -10%,rgba(212,168,83,.15),transparent 60%),var(--bg)}
+.wrap{max-width:1040px;margin:auto;padding:0 20px}
+nav{display:flex;align-items:center;gap:10px;padding:18px 0}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:800}
+nav b{font-size:18px}.sp{flex:1}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 13px;font-weight:700;cursor:pointer;font-size:14px}
+.hero{padding:46px 0 30px;display:grid;gap:28px;grid-template-columns:1.2fr 1fr;align-items:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.tag{display:inline-block;color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.03;letter-spacing:-1.5px;margin:10px 0 14px}
+.hero p{color:var(--muted);font-size:18px;max-width:520px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;padding:14px 20px;border-radius:14px}
+.wa{background:#1FA855;color:#fff}[data-theme=dark] .wa{background:var(--accent);color:#0F0E0C}
+.ghost{border:1px solid var(--line);color:var(--ink);background:var(--card)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 50px -25px rgba(0,0,0,.35)}
+.panel h3{font-size:16px;margin-bottom:10px}.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}.row:last-child{border:0}
+.row span{color:var(--muted)}
+h2{font-size:28px;letter-spacing:-.5px;margin:34px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.card .ic{font-size:26px}.card b{display:block;margin:10px 0 4px;font-size:17px}.card p{color:var(--muted);font-size:14px}
+.price{color:var(--accent);font-weight:800;margin-top:8px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.why div{padding:16px;border-left:3px solid var(--accent2);background:var(--card);border-radius:10px}
+.contact{margin:34px 0 60px;background:var(--accent);color:var(--bg);border-radius:24px;padding:30px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.contact h2{margin:0;color:var(--bg)}.contact p{opacity:.85}
+.contact .btn{background:var(--bg);color:var(--ink)}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+.float{position:fixed;bottom:18px;right:18px;background:#1FA855;color:#fff;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;text-decoration:none;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+[dir=rtl] .float{right:auto;left:18px}
+</style></head><body>
+<div class="wrap">
+<nav><div class="logo" id="logo"></div><b id="name"></b><span class="sp"></span><button class="pill" id="themebtn" aria-label="Switch light/dark">🌙</button><button class="pill" id="lang"></button></nav>
+<section class="hero"><div><span class="tag" id="tag"></span><h1 id="headline"></h1><p id="sub"></p>
+<div class="cta"><a class="btn wa" id="book" target="_blank"></a><a class="btn ghost" id="call"></a></div></div>
+<div class="panel"><h3 id="hoursT"></h3><div id="hours"></div><div class="row"><span id="locT"></span><a id="map" target="_blank" style="color:var(--accent);font-weight:700"></a></div></div></section>
+<h2 id="svcT"></h2><div class="grid" id="services"></div>
+<h2 id="whyT"></h2><div class="why" id="why"></div>
+<section class="contact"><div><h2 id="ctaT"></h2><p id="ctaS"></p></div><a class="btn" id="book2" target="_blank"></a></section>
+<footer>Demo website · template by levantline</footer></div>
+<a class="float" id="float" target="_blank" aria-label="WhatsApp">💬</a>
+<script>
+/* ===== BIZ: edit everything here ===== */
+const BIZ={
+ name:{en:"Cedar Dental Studio",ar:"عيادة سيدار لطب الأسنان"},
+ logo:"C",
+ theme:"light", showThemeButton:true,
+ tag:{en:"Family dentistry",ar:"طب أسنان للعائلة"},
+ headline:{en:"Healthy smiles, booked in one tap.",ar:"ابتسامة صحية، بحجز بلمسة واحدة."},
+ sub:{en:"Gentle care for the whole family. Message us on WhatsApp and get your appointment today.",ar:"رعاية لطيفة لكل العائلة. راسلنا على واتساب واحجز موعدك اليوم."},
+ whatsapp:"15555550123", phone:"+1 555 555 0123", currency:"$",
+ mapLink:"https://maps.google.com",
+ hours:[{d:{en:"Sun–Thu",ar:"الأحد–الخميس"},h:"9:00–19:00"},{d:{en:"Saturday",ar:"السبت"},h:"10:00–16:00"},{d:{en:"Friday",ar:"الجمعة"},h:{en:"Closed",ar:"مغلق"}}],
+ services:[
+  {i:"🦷",n:{en:"Check-up & cleaning",ar:"فحص وتنظيف"},d:{en:"Full exam, scale and polish.",ar:"فحص كامل وتنظيف وتلميع."},p:40},
+  {i:"✨",n:{en:"Teeth whitening",ar:"تبييض الأسنان"},d:{en:"Brighter smile in one visit.",ar:"ابتسامة أفتح بزيارة واحدة."},p:150},
+  {i:"🧒",n:{en:"Kids dentistry",ar:"أسنان الأطفال"},d:{en:"Calm, friendly visits for children.",ar:"زيارات هادئة وودودة للأطفال."},p:30},
+  {i:"🔧",n:{en:"Fillings & repairs",ar:"حشوات وترميم"},d:{en:"Tooth-coloured, same day.",ar:"بلون السن، في نفس اليوم."},p:60}],
+ why:[{en:"Same-week appointments",ar:"مواعيد خلال نفس الأسبوع"},{en:"Clear prices, no surprises",ar:"أسعار واضحة بدون مفاجآت"},{en:"English & Arabic spoken",ar:"نتحدث العربية والإنجليزية"}]
+};
+/* ===== end of edit area ===== */
+const T={hoursT:{en:"Opening hours",ar:"ساعات العمل"},locT:{en:"Location",ar:"الموقع"},map:{en:"Open map",ar:"افتح الخريطة"},svcT:{en:"Services",ar:"الخدمات"},whyT:{en:"Why choose us",ar:"لماذا نحن"},
+ ctaT:{en:"Ready to book?",ar:"جاهز للحجز؟"},ctaS:{en:"Send us a message and we'll confirm your time.",ar:"أرسل لنا رسالة وسنؤكد موعدك."},book:{en:"💬 Book on WhatsApp",ar:"💬 احجز عبر واتساب"},call:{en:"📞 Call us",ar:"📞 اتصل بنا"},from:{en:"from",ar:"ابتداءً من"},msg:{en:"Hi! I'd like to book an appointment.",ar:"مرحبا! بدي أحجز موعد."}};
+let L="en";const $=id=>document.getElementById(id),R=document.documentElement;
+const qp=new URLSearchParams(location.search).get("theme");R.dataset.theme=qp||BIZ.theme;
+function v(x){return typeof x==="object"?x[L]:x}
+function render(){R.lang=L;R.dir=L==="ar"?"rtl":"ltr";$("lang").textContent=L==="en"?"عربي":"English";
+ $("logo").textContent=BIZ.logo;$("name").textContent=v(BIZ.name);$("tag").textContent=v(BIZ.tag);$("headline").textContent=v(BIZ.headline);$("sub").textContent=v(BIZ.sub);
+ const wa=`https://wa.me/${BIZ.whatsapp}?text=${encodeURIComponent(v(T.msg))}`;
+ ["book","book2"].forEach(k=>{$(k).href=wa;$(k).textContent=v(T.book)});$("float").href=wa;
+ $("call").href="tel:"+BIZ.phone.replace(/\s/g,"");$("call").textContent=v(T.call);
+ ["hoursT","locT","svcT","whyT","ctaT","ctaS"].forEach(k=>$(k).textContent=v(T[k]));$("map").textContent=v(T.map);$("map").href=BIZ.mapLink;
+ $("hours").innerHTML=BIZ.hours.map(r=>`<div class="row"><span>${v(r.d)}</span><b dir="ltr">${v(r.h)}</b></div>`).join("");
+ $("services").innerHTML=BIZ.services.map(s=>`<div class="card"><div class="ic">${s.i}</div><b>${v(s.n)}</b><p>${v(s.d)}</p><div class="price">${v(T.from)} ${BIZ.currency}${s.p}</div></div>`).join("");
+ $("why").innerHTML=BIZ.why.map(w=>`<div>✔ ${v(w)}</div>`).join("");}
+const tb=$("themebtn");if(!BIZ.showThemeButton)tb.style.display="none";
+function icon(){tb.textContent=R.dataset.theme==="dark"?"☀️":"🌙"}icon();
+tb.onclick=()=>{R.dataset.theme=R.dataset.theme==="dark"?"light":"dark";icon()};
+$("lang").onclick=()=>{L=L==="en"?"ar":"en";render()};render();
+</script></body></html>
