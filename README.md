@@ -11,3 +11,4 @@ Small tools and templates for cafes, restaurants and local businesses. Made in A
 ## Rules
 - Work on branches, merge by pull request. Never push to main.
 - No private numbers, keys or personal data in this repo.
+- Full rules for agents and sessions: `CLAUDE.md`.
