@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head>
+<!-- levantline home v1.1 (2026-11-10)
+     Changelog: v1.1 landing template card added · bot and landing demo links · "coming soon" is no longer a dead link --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>levantline · Small things from the Levant</title>
-<meta name="description" content="Digital templates and Levant sticker designs, made in Amman.">
+<meta name="description" content="Website templates, a free QR menu tool and small digital products, made in Amman.">
 <link rel="icon" href="img/logo.png">
 <style>
 :root{--cream:#F7F1E6;--ink:#1F2A33;--teal:#1F6F6B;--olive:#3E5C2F;--gold:#E9A23B}
@@ -15,7 +17,7 @@ nav{display:flex;align-items:center;gap:12px;padding:22px 0}nav img{width:44px;b
 .card img{width:100%;display:block}.card div{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card h2{font-size:22px}.card p{color:#4b5560}.price{font-weight:800;color:var(--teal)}
 .btn{margin-top:auto;display:inline-block;text-align:center;background:var(--ink);color:#fff;text-decoration:none;padding:13px 18px;border-radius:12px;font-weight:700}
-.btn.alt{background:var(--olive)}
+.btn.alt{background:var(--olive)}.btn.soon{opacity:.55;cursor:default}
 footer{border-top:1px solid #e5dccb;padding:26px 0 40px;color:#7a7f86;font-size:14px}
 
 [data-theme=dark]{--cream:#0F0E0C;--ink:#F3EBDD;--teal:#D4A853;--olive:#D4A853;--gold:#D4A853}
@@ -40,12 +42,18 @@ footer{border-top:1px solid #e5dccb;padding:26px 0 40px;color:#7a7f86;font-size:
 <article class="card"><img src="img/menu.png" alt="Restaurant menu website template"><div>
 <h2>Restaurant Menu Website Template</h2><p>A mobile menu that takes WhatsApp orders. English + Arabic, QR ready, free hosting. <a href="demo-menu/">Try the live demo</a>.</p>
 <span class="price">$19</span><a class="btn" href="https://faisalbasem.gumroad.com/l/restaurant-menu-template">Get it on Gumroad</a><a class="btn alt" href="https://www.fiverr.com/s/jyeear9" style="margin-top:8px">Or hire me to build it</a></div></article>
+<article class="card"><img src="img/landing.png" alt="Business landing page template cover"><div>
+<h2>Business Landing Page Template</h2><p>A one-page site with a WhatsApp booking button. English + Arabic, light and dark. <a href="demo-landing/">Try the live demo</a>.</p>
+<span class="price">$15</span><a class="btn" href="https://faisalbasem.gumroad.com/l/zaouha">Get it on Gumroad</a></div></article>
 <article class="card"><img src="img/stickers.png" alt="10 Levant sticker designs"><div>
 <h2>10 Levant Sticker Designs</h2><p>Arabic coffee, olives, pomegranates, Ramadan lanterns and more. PNG, SVG and printable A4 sheets.</p>
-<span class="price">$4.99</span><a class="btn alt" href="#" id="stickers">Coming soon</a></div></article>
+<span class="price">$4.99</span><span class="btn alt soon" id="stickers" aria-disabled="true">Coming soon</span></div></article>
 <article class="card"><div style="padding-top:28px">
 <h2>Free QR Menu Generator</h2><p>Paste your menu or WhatsApp link and download a clean, print-ready QR code. English + Arabic. Nothing is uploaded.</p>
 <span class="price">Free</span><a class="btn alt" href="tools/qr-menu/">Make a QR code</a></div></article>
+<article class="card"><div style="padding-top:28px">
+<h2>WhatsApp Booking Bot Demo</h2><p>See how a simple bot answers prices and hours and takes a booking request, in English and Arabic. Runs in your browser.</p>
+<span class="price">Demo</span><a class="btn alt" href="demo-bot/">Try the bot demo</a></div></article>
 </section>
 <footer>© 2026 levantline · Amman, Jordan</footer></div>
 <script>
