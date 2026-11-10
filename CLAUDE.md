@@ -8,7 +8,7 @@ Holds the free QR tool, live demos (menu, landing, bot) and client-ready templat
 2. Every page must work on an iPhone, in Arabic (RTL) where offered, in light and dark.
 3. Version number in the page or changelog, with 3 lines on what changed.
 4. Client builds use a branch named `client/<short-name>` (see the basha-order-delivery skill).
-5. Do NOT merge branch `site/new-gumroad-links`: it breaks the Gumroad links.
+5. Branch `site/new-gumroad-links` was deleted by Basha on 2026-11-10 (it broke the Gumroad links). Do not recreate it.
 6. Never link the private dashboards or the trading lab from this site.
 
 ## Never
