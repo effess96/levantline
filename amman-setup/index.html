@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amman Digital Setup · levantline</title>
+<meta name="description" content="Google profile, QR menu and WhatsApp catalog for small shops in Amman. Fixed JOD prices.">
+<link rel="icon" href="../img/logo.png">
+<!-- v1.0 (2026-11-05)
+ - New one-page offer for local Amman shops (Arabic first, English below)
+ - Three fixed JOD packages, first-shop discount, live QR demo link
+ - WhatsApp button uses a placeholder number: Basha replaces it before sharing -->
+<style>
+:root{--cream:#F7F1E6;--ink:#1F2A33;--teal:#1F6F6B;--olive:#3E5C2F;--gold:#E9A23B}
+*{box-sizing:border-box;margin:0}body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+.wrap{max-width:900px;margin:auto;padding:0 20px}
+header{padding:40px 0 20px}h1{font-size:clamp(30px,7vw,52px);line-height:1.15}h1 span{color:var(--teal)}
+.lead{font-size:19px;color:#4b5560;margin-top:12px;max-width:620px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:28px 0}
+.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 10px 28px -14px rgba(31,42,51,.3);display:flex;flex-direction:column;gap:8px}
+.card.best{outline:3px solid var(--gold)}
+.card h2{font-size:21px}.price{font-size:28px;font-weight:800;color:var(--teal)}
+.card ul{padding-inline-start:18px;color:#4b5560}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:14px 22px;border-radius:12px;font-weight:700;margin:6px 0}
+.btn.alt{background:var(--teal)}
+.note{background:#fff;border-inline-start:5px solid var(--olive);padding:14px 16px;border-radius:10px;margin:18px 0;color:#38424b}
+.en{direction:ltr;text-align:left;border-top:1px solid #ddd3c2;margin-top:40px;padding-top:30px}
+footer{padding:40px 0;color:#7a8590;font-size:14px}
+</style></head><body><div class="wrap">
+
+<header>
+<h1>محلك <span>سهل تلاقيه</span> وسهل تطلب منه</h1>
+<p class="lead">بظبطلك صفحة جوجل ماب، ومنيو أونلاين مع زر طلب واتساب و QR للطاولات. سعر ثابت بالدينار، وبتدفع بعد ما تشوف الشغل.</p>
+<a class="btn alt" href="https://effess96.github.io/levantline/tools/qr-menu/">جرّب QR مجاني الآن</a>
+<a class="btn" href="https://wa.me/962791923148?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A8%D8%AF%D9%8A%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%AD%D9%84">احكي معي على واتساب</a>
+</header>
+
+<section class="grid">
+<div class="card"><h2>الأساسية</h2><div class="price">25 دينار</div>
+<ul><li>صفحة جوجل ماب كاملة</li><li>ساعات الدوام، رقم، موقع، تصنيف</li><li>5 صور مرتبة</li></ul></div>
+<div class="card best"><h2>المنيو</h2><div class="price">45 دينار</div>
+<ul><li>صفحة منيو للموبايل (عربي + إنجليزي)</li><li>زر طلب واتساب مع المجموع</li><li>QR جاهز للطباعة للطاولات</li></ul></div>
+<div class="card"><h2>الكاملة</h2><div class="price">60 دينار</div>
+<ul><li>الأساسية + المنيو</li><li>شهر تعديلات (أسعار، صور، ساعات)</li></ul></div>
+</section>
+
+<div class="note">أول محل: نص السعر مقابل تقييم وإذن نعرض صفحتكم كمثال. الدفع كاش أو CliQ بعد التسليم. ما بطلب كلمات سر أبداً، صاحب المحل بيسجل دخول بنفسه.</div>
+
+<p>شوف مثال منيو: <a href="../demo-menu/">effess96.github.io/levantline/demo-menu</a></p>
+
+<section class="en">
+<h1>Your shop, <span>easy to find</span> and easy to order from</h1>
+<p class="lead">Google Maps profile, a mobile menu page with a WhatsApp order button, and table QR codes. Fixed JOD prices. You pay after you see the work.</p>
+<section class="grid">
+<div class="card"><h2>Basic</h2><div class="price">25 JOD</div><ul><li>Google Maps profile set up or fixed</li><li>Hours, phone, map pin, category</li><li>5 clean photos</li></ul></div>
+<div class="card best"><h2>Menu</h2><div class="price">45 JOD</div><ul><li>Mobile menu page (Arabic + English)</li><li>WhatsApp order button with total</li><li>Print-ready table QR</li></ul></div>
+<div class="card"><h2>Full</h2><div class="price">60 JOD</div><ul><li>Basic + Menu</li><li>1 month of updates (prices, photos, hours)</li></ul></div>
+</section>
+<div class="note">First shop: half price for a review and permission to show your page as an example. Cash or CliQ after delivery. I never ask for passwords: the owner logs in.</div>
+</section>
+
+<footer>levantline · Amman</footer>
+</div></body></html>
